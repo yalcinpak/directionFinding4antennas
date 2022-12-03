@@ -4,6 +4,10 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
  */
 
+#include <stdio.h>
+#include <math.h>
+#include <bluetooth/hci.h>
+
 #include <stddef.h>
 #include <errno.h>
 #include <zephyr/kernel.h>
