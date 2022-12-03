@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "direction.h": "c",
+        "kernel.h": "c",
+        "math.h": "c",
+        "hci.h": "c",
+        "conn.h": "c",
+        "buf.h": "c",
+        "zephyr.h": "c",
+        "limits.h": "c",
+        "stdbool.h": "c",
+        "errno.h": "c",
+        "kernel_includes.h": "c",
+        "types.h": "c",
+        "toolchain.h": "c",
+        "atomic.h": "c",
+        "kobject.h": "c"
+    }
+}

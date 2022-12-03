@@ -40,8 +40,7 @@ static K_SEM_DEFINE(sem_per_sync_lost, 0, 1);
 /* Example sequence of antenna switch patterns for antenna matrix designed by
  * Nordic. For more information about antenna switch patterns see README.rst.
  */
-static const uint8_t ant_patterns[] = { 0x2, 0x0, 0x5, 0x6, 0x1, 0x4,
-					0xC, 0x9, 0xE, 0xD, 0x8, 0xA };
+static const uint8_t ant_patterns[] = {0x0, 0x1, 0x2, 0x3};
 #endif /* CONFIG_BT_DF_CTE_RX_AOA */
 
 static inline uint32_t adv_interval_to_ms(uint16_t interval)
