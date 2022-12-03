@@ -17,6 +17,7 @@
         "kobject.h": "c"
     },
     "nrf-connect.applications": [
-        "${workspaceFolder}\\direction_finding_connectionless_rx"
+        "${workspaceFolder}\\direction_finding_connectionless_rx",
+        "${workspaceFolder}\\direction_finding_connectionless_tx"
     ]
 }
