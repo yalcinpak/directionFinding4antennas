@@ -36,6 +36,10 @@ static K_SEM_DEFINE(sem_per_adv, 0, 1);
 static K_SEM_DEFINE(sem_per_sync, 0, 1);
 static K_SEM_DEFINE(sem_per_sync_lost, 0, 1);
 
+//custom variables
+float result;
+//custom variables
+
 #if defined(CONFIG_BT_DF_CTE_RX_AOA)
 /* Example sequence of antenna switch patterns for antenna matrix designed by
  * Nordic. For more information about antenna switch patterns see README.rst.
@@ -145,11 +149,47 @@ static void recv_cb(struct bt_le_per_adv_sync *sync,
 static void cte_recv_cb(struct bt_le_per_adv_sync *sync,
 			struct bt_df_per_adv_sync_iq_samples_report const *report)
 {
+	/* 
 	printk("CTE[%u]: samples count %d, cte type %s, slot durations: %u [us], "
 	       "packet status %s, RSSI %i\n",
 	       bt_le_per_adv_sync_get_index(sync), report->sample_count,
 	       cte_type2str(report->cte_type), report->slot_durations,
 	       packet_status2str(report->packet_status), report->rssi);
+	*/
+
+	printf("IQsamples= [");
+    for(int i=0; i<report->sample_count; i++)
+	{
+		
+     	result = ((float)report->sample[i].q) / ((float)report->sample[i].i) ;
+		// printf("Sample[%d] = angleX: %f \n",i , atan(result));
+		if(i<report->sample_count-1)
+		{
+			if(((float)report->sample[i].q) >= 0.0 )
+			{
+				printf("%d+%di;", report->sample[i].i, report->sample[i].q );
+			}
+			else
+			{
+				printf("%d%di;", report->sample[i].i, report->sample[i].q );
+			}
+		}
+		else
+		{
+			if(((float)report->sample[i].q) >= 0.0 )
+			{
+				printf("%d+%di", report->sample[i].i, report->sample[i].q );
+			}
+			else
+			{
+				printf("%d%di", report->sample[i].i, report->sample[i].q );
+			}
+		}
+		
+    }
+	printf("];");
+	printf("\n");
+	
 }
 
 static struct bt_le_per_adv_sync_cb sync_callbacks = {
