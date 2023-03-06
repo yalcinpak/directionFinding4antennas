@@ -12,4 +12,4 @@ empty_file.o: C:/ncs/v2.0.0/zephyr/misc/empty_file.c \
  C:/ncs/v2.0.0/zephyr/include/zephyr/dt-bindings/pwm/pwm.h \
  C:/ncs/v2.0.0/zephyr/dts/arm/nordic/override.dtsi \
  C:/ncs/v2.0.0/zephyr/boards/arm/nrf52833dk_nrf52833/nrf52833dk_nrf52833-pinctrl.dtsi \
- C:/Users/yalci/Desktop/myMasterProject/directionFinding4antennas/direction_finding_connectionless_rx/boards/nrf52833dk_nrf52833.overlay
+ c:/Users/yalci/Desktop/myMasterProject/directionFinding4antennas/direction_finding_connectionless_rx/boards/nrf52833dk_nrf52833.overlay

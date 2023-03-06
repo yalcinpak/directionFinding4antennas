@@ -1017,7 +1017,7 @@ zephyr_udc0: &usbd {
  status = "okay";
 };
 # 1 "<command-line>" 2
-# 1 "C:/Users/yalci/Desktop/myMasterProject/directionFinding4antennas/direction_finding_connectionless_rx/boards/nrf52833dk_nrf52833.overlay" 1
+# 1 "c:/Users/yalci/Desktop/myMasterProject/directionFinding4antennas/direction_finding_connectionless_rx/boards/nrf52833dk_nrf52833.overlay" 1
 
 
 

@@ -109,10 +109,10 @@ static void sync_cb(struct bt_le_per_adv_sync *sync,
 
 	bt_addr_le_to_str(info->addr, le_addr, sizeof(le_addr));
 
-	printk("PER_ADV_SYNC[%u]: [DEVICE]: %s synced, "
-	       "Interval 0x%04x (%u ms), PHY %s\n",
-	       bt_le_per_adv_sync_get_index(sync), le_addr, info->interval,
-	       adv_interval_to_ms(info->interval), phy2str(info->phy));
+	// printk("PER_ADV_SYNC[%u]: [DEVICE]: %s synced, "
+	//        "Interval 0x%04x (%u ms), PHY %s\n",
+	//        bt_le_per_adv_sync_get_index(sync), le_addr, info->interval,
+	//        adv_interval_to_ms(info->interval), phy2str(info->phy));
 
 	k_sem_give(&sem_per_sync);
 }
@@ -124,8 +124,8 @@ static void term_cb(struct bt_le_per_adv_sync *sync,
 
 	bt_addr_le_to_str(info->addr, le_addr, sizeof(le_addr));
 
-	printk("PER_ADV_SYNC[%u]: [DEVICE]: %s sync terminated\n",
-	       bt_le_per_adv_sync_get_index(sync), le_addr);
+	// printk("PER_ADV_SYNC[%u]: [DEVICE]: %s sync terminated\n",
+	//        bt_le_per_adv_sync_get_index(sync), le_addr);
 
 	k_sem_give(&sem_per_sync_lost);
 }
@@ -140,10 +140,10 @@ static void recv_cb(struct bt_le_per_adv_sync *sync,
 	bt_addr_le_to_str(info->addr, le_addr, sizeof(le_addr));
 	bin2hex(buf->data, buf->len, data_str, sizeof(data_str));
 
-	printk("PER_ADV_SYNC[%u]: [DEVICE]: %s, tx_power %i, "
-	       "RSSI %i, CTE %s, data length %u, data: %s\n",
-	       bt_le_per_adv_sync_get_index(sync), le_addr, info->tx_power,
-	       info->rssi, cte_type2str(info->cte_type), buf->len, data_str);
+	// printk("PER_ADV_SYNC[%u]: [DEVICE]: %s, tx_power %i, "
+	//        "RSSI %i, CTE %s, data length %u, data: %s\n",
+	//        bt_le_per_adv_sync_get_index(sync), le_addr, info->tx_power,
+	//        info->rssi, cte_type2str(info->cte_type), buf->len, data_str);
 }
 
 static void cte_recv_cb(struct bt_le_per_adv_sync *sync,
@@ -157,7 +157,7 @@ static void cte_recv_cb(struct bt_le_per_adv_sync *sync,
 	       packet_status2str(report->packet_status), report->rssi);
 	*/
 
-	printf("IQsamples= [");
+	// printf("[");		//printf("IQsamples= [");
     for(int i=0; i<report->sample_count; i++)
 	{
 		
@@ -167,11 +167,11 @@ static void cte_recv_cb(struct bt_le_per_adv_sync *sync,
 		{
 			if(((float)report->sample[i].q) >= 0.0 )
 			{
-				printf("%d+%di;", report->sample[i].i, report->sample[i].q );
+				printf("%d+%di; ", report->sample[i].i, report->sample[i].q );
 			}
 			else
 			{
-				printf("%d%di;", report->sample[i].i, report->sample[i].q );
+				printf("%d%di; ", report->sample[i].i, report->sample[i].q );
 			}
 		}
 		else
@@ -187,8 +187,12 @@ static void cte_recv_cb(struct bt_le_per_adv_sync *sync,
 		}
 		
     }
-	printf("];");
+
+	// printf("];\n");
 	printf("\n");
+	// printf("angle = bleAngleEstimate(IQsamples,cfgAngle)");
+	
+	 
 	
 }
 
@@ -211,17 +215,17 @@ static void scan_recv(const struct bt_le_scan_recv_info *info,
 
 	bt_addr_le_to_str(info->addr, le_addr, sizeof(le_addr));
 
-	printk("[DEVICE]: %s, AD evt type %u, Tx Pwr: %i, RSSI %i %s C:%u S:%u "
-	       "D:%u SR:%u E:%u Prim: %s, Secn: %s, Interval: 0x%04x (%u ms), "
-	       "SID: %u\n",
-	       le_addr, info->adv_type, info->tx_power, info->rssi, name,
-	       (info->adv_props & BT_GAP_ADV_PROP_CONNECTABLE) != 0,
-	       (info->adv_props & BT_GAP_ADV_PROP_SCANNABLE) != 0,
-	       (info->adv_props & BT_GAP_ADV_PROP_DIRECTED) != 0,
-	       (info->adv_props & BT_GAP_ADV_PROP_SCAN_RESPONSE) != 0,
-	       (info->adv_props & BT_GAP_ADV_PROP_EXT_ADV) != 0, phy2str(info->primary_phy),
-	       phy2str(info->secondary_phy), info->interval, adv_interval_to_ms(info->interval),
-	       info->sid);
+	// printk("[DEVICE]: %s, AD evt type %u, Tx Pwr: %i, RSSI %i %s C:%u S:%u "
+	//        "D:%u SR:%u E:%u Prim: %s, Secn: %s, Interval: 0x%04x (%u ms), "
+	//        "SID: %u\n",
+	//        le_addr, info->adv_type, info->tx_power, info->rssi, name,
+	//        (info->adv_props & BT_GAP_ADV_PROP_CONNECTABLE) != 0,
+	//        (info->adv_props & BT_GAP_ADV_PROP_SCANNABLE) != 0,
+	//        (info->adv_props & BT_GAP_ADV_PROP_DIRECTED) != 0,
+	//        (info->adv_props & BT_GAP_ADV_PROP_SCAN_RESPONSE) != 0,
+	//        (info->adv_props & BT_GAP_ADV_PROP_EXT_ADV) != 0, phy2str(info->primary_phy),
+	//        phy2str(info->secondary_phy), info->interval, adv_interval_to_ms(info->interval),
+	//        info->sid);
 
 	if (!per_adv_found && info->interval) {
 		sync_create_timeout_ms =
@@ -243,7 +247,7 @@ static void create_sync(void)
 	struct bt_le_per_adv_sync_param sync_create_param;
 	int err;
 
-	printk("Creating Periodic Advertising Sync...");
+	// printk("Creating Periodic Advertising Sync...");
 	bt_addr_le_copy(&sync_create_param.addr, &per_addr);
 	sync_create_param.options = 0;
 	sync_create_param.sid = per_sid;
@@ -251,23 +255,23 @@ static void create_sync(void)
 	sync_create_param.timeout = 0xa;
 	err = bt_le_per_adv_sync_create(&sync_create_param, &sync);
 	if (err) {
-		printk("failed (err %d)\n", err);
+		// printk("failed (err %d)\n", err);
 		return;
 	}
-	printk("success.\n");
+	// printk("success.\n");
 }
 
 static int delete_sync(void)
 {
 	int err;
 
-	printk("Deleting Periodic Advertising Sync...");
+	// printk("Deleting Periodic Advertising Sync...");
 	err = bt_le_per_adv_sync_delete(sync);
 	if (err) {
-		printk("failed (err %d)\n", err);
+		// printk("failed (err %d)\n", err);
 		return err;
 	}
-	printk("success\n");
+	// printk("success\n");
 
 	return 0;
 }
@@ -288,24 +292,24 @@ static void enable_cte_rx(void)
 #endif /* CONFIG_BT_DF_CTE_RX_AOA */
 	};
 
-	printk("Enable receiving of CTE...\n");
+	// printk("Enable receiving of CTE...\n");
 	err = bt_df_per_adv_sync_cte_rx_enable(sync, &cte_rx_params);
 	if (err) {
-		printk("failed (err %d)\n", err);
+		// printk("failed (err %d)\n", err);
 		return;
 	}
-	printk("success. CTE receive enabled.\n");
+	// printk("success. CTE receive enabled.\n");
 }
 
 static int scan_init(void)
 {
-	printk("Scan callbacks register...");
+	// printk("Scan callbacks register...");
 	bt_le_scan_cb_register(&scan_callbacks);
-	printk("success.\n");
+	// printk("success.\n");
 
-	printk("Periodic Advertising callbacks register...");
+	// printk("Periodic Advertising callbacks register...");
 	bt_le_per_adv_sync_cb_register(&sync_callbacks);
-	printk("success.\n");
+	// printk("success.\n");
 
 	return 0;
 }
@@ -323,13 +327,13 @@ static int scan_enable(void)
 	int err;
 
 	if (!scan_enabled) {
-		printk("Start scanning...");
+		// printk("Start scanning...");
 		err = bt_le_scan_start(&param, NULL);
 		if (err) {
-			printk("failed (err %d)\n", err);
+			// printk("failed (err %d)\n", err);
 			return err;
 		}
-		printk("success\n");
+		// printk("success\n");
 		scan_enabled = true;
 	}
 
@@ -340,13 +344,13 @@ static void scan_disable(void)
 {
 	int err;
 
-	printk("Scan disable...");
+	// printk("Scan disable...");
 	err = bt_le_scan_stop();
 	if (err) {
-		printk("failed (err %d)\n", err);
+		// printk("failed (err %d)\n", err);
 		return;
 	}
-	printk("Success.\n");
+	// printk("Success.\n");
 
 	scan_enabled = false;
 }
@@ -355,14 +359,14 @@ void main(void)
 {
 	int err;
 
-	printk("Starting Connectionless Locator Demo\n");
+	// printk("Starting Connectionless Locator Demo\n");
 
-	printk("Bluetooth initialization...");
+	// printk("Bluetooth initialization...");
 	err = bt_enable(NULL);
 	if (err) {
-		printk("failed (err %d)\n", err);
+		// printk("failed (err %d)\n", err);
 	}
-	printk("success\n");
+	// printk("success\n");
 
 	scan_init();
 
@@ -372,39 +376,39 @@ void main(void)
 		per_adv_found = false;
 		scan_enable();
 
-		printk("Waiting for periodic advertising...\n");
+		// printk("Waiting for periodic advertising...\n");
 		err = k_sem_take(&sem_per_adv, K_FOREVER);
 		if (err) {
-			printk("failed (err %d)\n", err);
+			// printk("failed (err %d)\n", err);
 			return;
 		}
-		printk("success. Found periodic advertising.\n");
+		// printk("success. Found periodic advertising.\n");
 
 		create_sync();
 
-		printk("Waiting for periodic sync...\n");
+		// printk("Waiting for periodic sync...\n");
 		err = k_sem_take(&sem_per_sync, K_MSEC(sync_create_timeout_ms));
 		if (err) {
-			printk("failed (err %d)\n", err);
+			// printk("failed (err %d)\n", err);
 			err = delete_sync();
 			if (err) {
 				return;
 			}
 			continue;
 		}
-		printk("success. Periodic sync established.\n");
+		// printk("success. Periodic sync established.\n");
 
 		enable_cte_rx();
 
 		/* Disable scan to cleanup output */
 		scan_disable();
 
-		printk("Waiting for periodic sync lost...\n");
+		// printk("Waiting for periodic sync lost...\n");
 		err = k_sem_take(&sem_per_sync_lost, K_FOREVER);
 		if (err) {
-			printk("failed (err %d)\n", err);
+			// printk("failed (err %d)\n", err);
 			return;
 		}
-		printk("Periodic sync lost.\n");
+		// printk("Periodic sync lost.\n");
 	}
 }

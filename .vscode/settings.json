@@ -14,7 +14,8 @@
         "types.h": "c",
         "toolchain.h": "c",
         "atomic.h": "c",
-        "kobject.h": "c"
+        "kobject.h": "c",
+        "functional": "c"
     },
     "nrf-connect.applications": [
         "${workspaceFolder}\\direction_finding_connectionless_rx",
