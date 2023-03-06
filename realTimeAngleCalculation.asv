@@ -1,0 +1,23 @@
+cfgAngle = bleAngleEstimateConfig;  %ble config lib for Matlab 
+cfgAngle.ArraySize = 4;             %define number of Antenna
+cfgAngle.ElementSpacing=0.45;       %choose antenna distances as lambda
+
+clear device    
+
+device = serialport("COM5",115200);
+
+
+
+flush(device);
+while(1) 
+
+myBuffer=readline(device);
+
+str = split(myBuffer);
+
+IQsamples = str2num(myBuffer);
+angle = bleAngleEstimate(IQsamples,cfgAngle)
+
+
+
+end

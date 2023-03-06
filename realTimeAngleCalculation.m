@@ -1,22 +1,24 @@
-cfgAngle = bleAngleEstimateConfig;
-cfgAngle.ArraySize = 4;
-cfgAngle.ElementSpacing=0.45;
+cfgAngle = bleAngleEstimateConfig;  %ble config lib for Matlab 
+cfgAngle.ArraySize = 4;             %define number of Antenna
+cfgAngle.ElementSpacing=0.45;       %choose antenna distances as lambda
 
-clear device
+clear device                        %close previous port
 
-device = serialport("COM5",115200);
+device = serialport("COM5",115200); %start serial port
 
 
 
-flush(device);
-while(1) 
+flush(device);                      %flush port buffer
+while(1)                            %infinite loop
 
-myBuffer=readline(device);
+myBuffer=readline(device);          %read string from port
 
-str = split(myBuffer);
+str = split(myBuffer);              %split string to string matrix
 
-IQsamples = str2num(myBuffer);
-angle = bleAngleEstimate(IQsamples,cfgAngle)
+IQsamples = str2num(myBuffer);      %convert string matrix to 
+                                    % complex double matrix
+
+angle = bleAngleEstimate(IQsamples,cfgAngle)    %calculate angle
 
 
 
