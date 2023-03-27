@@ -281,10 +281,10 @@ static void enable_cte_rx(void)
 	int err;
 
 	const struct bt_df_per_adv_sync_cte_rx_param cte_rx_params = {
-		.max_cte_count = 5,
+		.max_cte_count = 10,
 #if defined(CONFIG_BT_DF_CTE_RX_AOA)
 		.cte_types = BT_DF_CTE_TYPE_ALL,
-		.slot_durations = 0x2,
+		.slot_durations = 0x1,
 		.num_ant_ids = ARRAY_SIZE(ant_patterns),
 		.ant_ids = ant_patterns,
 #else

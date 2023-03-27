@@ -18,7 +18,7 @@
 /* Length of CTE in unit of 8[us] */
 #define CTE_LEN (0x14U)
 /* Number of CTE send in single periodic advertising train */
-#define PER_ADV_EVENT_CTE_COUNT 5
+#define PER_ADV_EVENT_CTE_COUNT 1
 
 static void adv_sent_cb(struct bt_le_ext_adv *adv,
 			struct bt_le_ext_adv_sent_info *info);
