@@ -1043,8 +1043,8 @@ zephyr_udc0: &usbd {
 
  dfegpio0-gpios = <&gpio0 3 0>;
  dfegpio1-gpios = <&gpio0 4 0>;
-
-
+ dfegpio2-gpios = <&gpio0 28 0>;
+ dfegpio3-gpios = <&gpio0 29 0>;
 };
 # 1 "<command-line>" 2
 # 1 "C:/ncs/v2.0.0/zephyr/misc/empty_file.c"

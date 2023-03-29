@@ -1,7 +1,7 @@
 cfgAngle = bleAngleEstimateConfig;  %ble config lib for Matlab 
 cfgAngle.ArraySize = 4;             %define number of Antenna
 cfgAngle.ElementSpacing=0.45;       %choose antenna distances as lambda
-
+cfgAngle.SlotDuration = 1
 clear device                        %close previous port
 
 device = serialport("COM5",115200); %start serial port

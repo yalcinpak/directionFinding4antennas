@@ -149,13 +149,13 @@ static void recv_cb(struct bt_le_per_adv_sync *sync,
 static void cte_recv_cb(struct bt_le_per_adv_sync *sync,
 			struct bt_df_per_adv_sync_iq_samples_report const *report)
 {
-	/* 
-	printk("CTE[%u]: samples count %d, cte type %s, slot durations: %u [us], "
-	       "packet status %s, RSSI %i\n",
-	       bt_le_per_adv_sync_get_index(sync), report->sample_count,
-	       cte_type2str(report->cte_type), report->slot_durations,
-	       packet_status2str(report->packet_status), report->rssi);
-	*/
+	
+	// printk("CTE[%u]: samples count %d, cte type %s, slot durations: %u [us], "
+	//        "packet status %s, RSSI %i\n",
+	//        bt_le_per_adv_sync_get_index(sync), report->sample_count,
+	//        cte_type2str(report->cte_type), report->slot_durations,
+	//        packet_status2str(report->packet_status), report->rssi);
+	
 
 	// printf("[");		//printf("IQsamples= [");
     for(int i=0; i<report->sample_count; i++)
@@ -281,7 +281,7 @@ static void enable_cte_rx(void)
 	int err;
 
 	const struct bt_df_per_adv_sync_cte_rx_param cte_rx_params = {
-		.max_cte_count = 10,
+		.max_cte_count = 5,
 #if defined(CONFIG_BT_DF_CTE_RX_AOA)
 		.cte_types = BT_DF_CTE_TYPE_ALL,
 		.slot_durations = 0x1,
