@@ -1,5 +1,5 @@
 cfgAngle = bleAngleEstimateConfig;  %ble config lib for Matlab 
-cfgAngle.ArraySize = 4             %define number of Antenna
+cfgAngle.ArraySize = 4;             %define number of Antenna
 cfgAngle.ElementSpacing=0.45;       %choose antenna distances as lambda
 cfgAngle.SlotDuration = 1;
 cfgAngle.SwitchingPattern = [1 2 3 4]
